@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:t3IfHJfnoAkAaZUrKJxSdY0vXv5+ctRJyVPz/3aEaT8=',
+    'key' => 'base64:o/kk9oAkxxrssWIyzQdwLPYcy5tnpJ9nJyF1g1EPvOA=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -175,7 +175,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\framework/cache/data',
+        'path' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -257,7 +257,7 @@
         'port' => '3306',
         'database' => 'tour',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'unix_socket' => '',
         'charset' => 'utf8',
         'collation' => 'utf8_unicode_ci',
@@ -277,7 +277,7 @@
         'port' => '3306',
         'database' => 'tour',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -292,7 +292,7 @@
         'port' => '3306',
         'database' => 'tour',
         'username' => 'root',
-        'password' => '',
+        'password' => 'root',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -332,12 +332,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\app',
+        'root' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\app/public',
+        'root' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\app/public',
         'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
@@ -383,13 +383,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\logs/laravel.log',
+        'path' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\logs/laravel.log',
+        'path' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -453,7 +453,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\usa_visa_latest\\resources\\views/vendor/mail',
+        0 => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\resources\\views/vendor/mail',
       ),
     ),
     'log_channel' => NULL,
@@ -546,7 +546,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\framework/sessions',
+    'files' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -566,9 +566,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\usa_visa_latest\\resources\\views',
+      0 => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\usa_visa_latest\\storage\\framework\\views',
+    'compiled' => 'D:\\Files\\xampp\\htdocs\\usvisaappointment.com\\storage\\framework\\views',
   ),
   'debug-server' => 
   array (
@@ -586,6 +586,7 @@
     ),
     'dont_alias' => 
     array (
+      0 => 'App\\Nova',
     ),
   ),
 );
