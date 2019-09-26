@@ -24,8 +24,11 @@
     if(!isset($_COOKIE['temp_user_id'])) {
             $cookie_name = "temp_user_id";
             $cookie_value = rand();
+            $user_id = $cookie_value;
             setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-    } 
+    } else {
+        $user_id = $_COOKIE['temp_user_id'];
+    }
 ?>
 {!! Form::open(['route' => ['personalInformation.update'], 'id' => 'personalInformationUpdate', 'method' => 'post', 'files' => true]) !!}
 <?php
@@ -79,7 +82,6 @@
     $place_of_birth = '';
     $place_of_issue = '';
     $issuing_authority = '';
-    $user_id = rand();
     ?>
 @if(!empty($PersonalInfo))
 @foreach($PersonalInfo as $personal_data)
@@ -180,7 +182,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="first_name">First Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="{{ $first_name }}">
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="{{ $first_name }}" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="middle_name">Middle Name</label>
@@ -188,7 +190,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="last_name">Last Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="{{ $last_name }}">
+                                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="{{ $last_name }}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Full name in native alphabet</label>
@@ -239,7 +241,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="DOB_Year">Year<span class="required">*</span></label>
-                                <input type="text" name="DOB_Year" id="DOB_Year" class="form-control" minlength="4" maxlength="4" value="{{ $DOB_Year }}">                           
+                                <input type="text" name="DOB_Year" id="DOB_Year" class="form-control" minlength="4" maxlength="4" value="{{ $DOB_Year }}" required>                           
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Gender<span class="required">*</span></label>
@@ -254,38 +256,38 @@
                             </div>
                             <div class="form-group col-md-5">
                                 <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Email" value="{{ $email }}" >
+                                <input type="email" class="form-control" id="user_email" name="user_email" placeholder="Email" value="{{ $email }}"  required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="user_confirm_email">Confirm Email <span class="required">*</span></label>
-                                <input type="email" class="form-control" id="user_confirm_email" name="user_confirm_email" placeholder="Confirm Email" value="{{ $email }}">
+                                <input type="email" class="form-control" id="user_confirm_email" name="user_confirm_email" placeholder="Confirm Email" value="{{ $email }}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Place">Place of Birth<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="Country">country<span class="required">*</span></label>
-                                <input type="text" name="country_name" placeholder="country" class="form-control" onchange="fetchCountry(this.value)" value="{{ $birth_country }}">
+                                <input type="text" name="country_name" placeholder="country" class="form-control" onchange="fetchCountry(this.value)" value="{{ $birth_country }}" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="lname">state<span class="required">*</span></label>
-                                <input type="text" name="state_name" placeholder="state" class="form-control" value="{{ $birth_state }}" >
+                                <input type="text" name="state_name" placeholder="state" class="form-control" value="{{ $birth_state }}" required >
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="lname">City<span class="required">*</span></label>
-                                <input type="text" name="city_name" placeholder="city" class="form-control" value="{{ $birth_city }}">
+                                <input type="text" name="city_name" placeholder="city" class="form-control" value="{{ $birth_city }}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Nationality<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" name="nationality_name" placeholder="Nationality" class="form-control" value="{{ $nationality }}">                              
+                                <input type="text" name="nationality_name" placeholder="Nationality" class="form-control" value="{{ $nationality }}" required>                              
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Marital Status<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <select name="marital_status" style="width: 100%; height: 32px;">
+                                <select name="marital_status" style="width: 100%; height: 32px;" required>
                                     <option value="Single" <?php if($marital_status == 'Single'){ echo 'selected'; } ?>>SINGLE</option>
                                     <option value="Married" <?php if($marital_status == 'Married'){ echo 'selected'; } ?>>MARRIED</option>
                                     <option value="Common law Marriage" <?php if($marital_status == 'Common law Marriage'){ echo 'selected'; } ?>>COMMON LAW MARRIAGE</option>
@@ -314,7 +316,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="father_first_name">First Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="father_first_name" name="father_first_name" placeholder="First Name" value="{{ $father_first_name }}" >
+                                <input type="text" class="form-control" id="father_first_name" name="father_first_name" placeholder="First Name" value="{{ $father_first_name }}"  required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="father_middle_name">Middle Name</label>
@@ -322,7 +324,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="father_last_name">Last Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="father_last_name" name="father_last_name" placeholder="Last Name" value="{{ $father_last_name  }}">
+                                <input type="text" class="form-control" id="father_last_name" name="father_last_name" placeholder="Last Name" value="{{ $father_last_name  }}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Full name in native alphabet</label>
@@ -385,14 +387,14 @@
                                 <label for="email">Citizen Status<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" name="father_citizen_status" id="father_citizen_status" class="form-control" placeholder="Citizen Country Name" value="{{ $citizen_status}}">   
+                                <input type="text" name="father_citizen_status" id="father_citizen_status" class="form-control" placeholder="Citizen Country Name" value="{{ $citizen_status}}" required>   
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Mother's Name<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="mother_first_name">First Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="mother_first_name" name="mother_first_name" placeholder="First Name" value="{{ $mother_first_name }}">
+                                <input type="text" class="form-control" id="mother_first_name" name="mother_first_name" placeholder="First Name" value="{{ $mother_first_name }}" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="mother_middle_name">Middle Name</label>
@@ -400,7 +402,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="mother_last_name">Last Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="mother_last_name" name="mother_last_name" placeholder="Last Name" value="{{ $mother_last_name  }}">
+                                <input type="text" class="form-control" id="mother_last_name" name="mother_last_name" placeholder="Last Name" value="{{ $mother_last_name  }}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Mother's Date of Birth<span class="required">*</span></label>
@@ -465,7 +467,7 @@
                                 <label for="email">Nationality<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" name="parents_nationality" id="parents_nationality" class="form-control" value="{{ $nationality   }}">  
+                                <input type="text" name="parents_nationality" id="parents_nationality" class="form-control" value="{{ $nationality   }}" required>  
                             </div>
                         </div>
                     </div>
@@ -485,40 +487,40 @@
                                 <label for="email">Phone Number<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" value="{{ $phone_no }}"  style="width: 40%;">
+                                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" value="{{ $phone_no }}"  style="width: 40%;" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Secondary/work phone numbers<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="other_number" name="other_number" placeholder="Phone Number"  style="width: 40%;" value="{{ $secondary_no}}">
+                                <input type="text" class="form-control" id="other_number" name="other_number" placeholder="Phone Number"  style="width: 40%;" value="{{ $secondary_no}}" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">Home Address <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="home_address" name="home_address" value="{{ $address  }}" >
+                                <input type="text" class="form-control" id="home_address" name="home_address" value="{{ $address  }}" required >
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">
                                 <label for="Address">Apartment/Suite/Unit Number <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="apartment" name="apartment" value="{{ $appartment_no }}" >
+                                <input type="text" class="form-control" id="apartment" name="apartment" value="{{ $appartment_no }}" required >
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">
                                 <label for="Address">City<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="city_add" name="city_add" value="{{ $city }}" >
+                                <input type="text" class="form-control" id="city_add" name="city_add" value="{{ $city }}"  required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">
                                 <label for="Address">Country<span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="country_add" name="country_add" value="{{ $country  }}" >
+                                <input type="text" class="form-control" id="country_add" name="country_add" value="{{ $country  }}" required >
                             </div>
                         </div>
                     </div>
@@ -537,39 +539,39 @@
                                 <label for="email">Passport Number: <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="passport_number" name="passport_number" placeholder="Job title">
+                                <input type="text" class="form-control" id="passport_number" name="passport_number" placeholder="Job title" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Passport Expiry Date: <span class="required">*</span>
                                 </label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="date" class="form-control" id="passport_expiry_date" name="passport_expiry_date">
+                                <input type="date" class="form-control" id="passport_expiry_date" name="passport_expiry_date" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Passport Issue Date: <span class="required">*</span>
                                 </label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="date" class="form-control" id="passport_issue_date" name="passport_issue_date">
+                                <input type="date" class="form-control" id="passport_issue_date" name="passport_issue_date" required>
                             </div>                        
                             <div class="form-group col-md-2">
                                 <label for="Address">Place of birth:  <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="place_of_birth" name="place_of_birth" >
+                                <input type="text" class="form-control" id="place_of_birth" name="place_of_birth"  required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">Place of issue:  <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="place_of_issue" name="place_of_issue"  >
+                                <input type="text" class="form-control" id="place_of_issue" name="place_of_issue"  required >
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">Issuing Authority: <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="issuing_authority" name="issuing_authority"  >
+                                <input type="text" class="form-control" id="issuing_authority" name="issuing_authority"  required >
                             </div>                         
                         </div>
                     </div>
@@ -591,13 +593,13 @@
                                             <label for="email">Specific job title aboard aircraft or vessel: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9">
-                                            <input type="text" class="form-control" id="aircraft_job_title" name="aircraft_job_title" placeholder="Job title">
+                                            <input type="text" class="form-control" id="aircraft_job_title" name="aircraft_job_title" placeholder="Job title" required>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="email">Name of company that owns the aircraft or vessel you will be working on: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9">
-                                            <input type="text" class="form-control" id="company_that_owns_the_aircraft" name="company_that_owns_the_aircraft" placeholder="Name" >
+                                            <input type="text" class="form-control" id="company_that_owns_the_aircraft" name="company_that_owns_the_aircraft" placeholder="Name" required >
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="email">Did you acquire your position using arecruiting/manning/crewing agency? <span class="required">*</span></label>
@@ -610,49 +612,49 @@
                                             <label for="Address" class="agency">Agency Name:  <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_agency_name" name="crew_agency_name" >
+                                            <input type="text" class="form-control agency" id="crew_agency_name" name="crew_agency_name"  required>
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">Contact Name:  <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_contact_name" name="crew_contact_name"  >
+                                            <input type="text" class="form-control agency" id="crew_contact_name" name="crew_contact_name" required  >
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">Street Address: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_street" name="crew_street"  >
+                                            <input type="text" class="form-control agency" id="crew_street" name="crew_street"  required >
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">City: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_city" name="crew_city"  >
+                                            <input type="text" class="form-control agency" id="crew_city" name="crew_city" required  >
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">State/Province: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_state" name="crew_state" >
+                                            <input type="text" class="form-control agency" id="crew_state" name="crew_state" required >
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">Postal Zone/ZIP : <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_postal" name="crew_postal"  >
+                                            <input type="text" class="form-control agency" id="crew_postal" name="crew_postal" required  >
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">Country/Region:  <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_country" name="crew_country" >
+                                            <input type="text" class="form-control agency" id="crew_country" name="crew_country" required >
                                         </div>
                                         <div class="form-group col-md-2 agency">
                                             <label for="Address" class="agency">Telephone Number: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 agency">
-                                            <input type="text" class="form-control agency" id="crew_telephone_number" name="crew_telephone_number"  >
+                                            <input type="text" class="form-control agency" id="crew_telephone_number" name="crew_telephone_number"  required >
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label for="are_you_serving_aboard">Are you serving aboard a seagoing ship or vessel?  <span class="required">*</span></label>
@@ -665,13 +667,13 @@
                                             <label for="vessel_name" class="abroad">Seagoing Ship/Vessel Name:  <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 abroad">
-                                            <input type="text" class="form-control abroad" id="vessel_name" name="vessel_name"  >
+                                            <input type="text" class="form-control abroad" id="vessel_name" name="vessel_name" required  >
                                         </div>
                                         <div class="form-group col-md-2 abroad">
                                             <label for="vessel_identification_number" class="abroad">Seagoing Ship/Vessel Identification Number: <span class="required">*</span></label>
                                         </div>
                                         <div class="form-group col-md-9 abroad">
-                                            <input type="text" class="form-control abroad" id="vessel_identification_number" name="vessel_identification_number"  >
+                                            <input type="text" class="form-control abroad" id="vessel_identification_number" name="vessel_identification_number" required  >
                                         </div>
                                     </div>
                                 </div>

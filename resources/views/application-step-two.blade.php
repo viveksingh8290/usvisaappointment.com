@@ -24,9 +24,12 @@
 	if(!isset($_COOKIE['temp_user_id'])) {
 			$cookie_name = "temp_user_id";
 			$cookie_value = rand();
+            $user_id = $cookie_value;
 			setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-	} 
-	?>
+	} else {
+        $user_id = $_COOKIE['temp_user_id'];
+    }
+?>
 {!! Form::open(['route' => ['additionalInformation.update'], 'id' => 'additionalInformationUpdate', 'method' => 'post', 'files' => true]) !!}
 <?php
 	$add_country_name = '';
@@ -68,7 +71,6 @@
 	$upcoming_apart = '';
 	$upcoming_city = ''; 
 	$upcoming_country = '';
-	$user_id = rand();
 ?>
 @if(!empty($AddInfo))
 	@foreach($AddInfo as $add_data)
@@ -136,7 +138,7 @@
 							<label for="add_country_name">Country Name<span class="required">*</span></label>
 						</div>
 						<div class="form-group col-md-9">
-							<select name="add_country_name" id="add_country_name" style="width: 100%; height: 32px;">
+							<select name="add_country_name" id="add_country_name" style="width: 100%; height: 32px;" required>
 								<option value="none">None</option>
 								<option value="" selected="">Please Select</option>
 								<option value="" disabled="disabled">----------------------------------</option>
