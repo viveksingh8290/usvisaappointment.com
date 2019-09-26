@@ -21,14 +21,7 @@
     </div>
 </section>
 <?php
-    if(!isset($_COOKIE['temp_user_id'])) {
-            $cookie_name = "temp_user_id";
-            $cookie_value = rand();
-            $user_id = $cookie_value;
-            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-    } else {
-        $user_id = $_COOKIE['temp_user_id'];
-    }
+    $user_id = \App\Helper\AppHelper::instance()->get_cookie_value();
 ?>
 {!! Form::open(['route' => ['personalInformation.update'], 'id' => 'personalInformationUpdate', 'method' => 'post', 'files' => true]) !!}
 <?php
