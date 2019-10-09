@@ -13,7 +13,7 @@ class AppHelper
          return new AppHelper();
      }
 
-     public function getCookieValue()
+     public function get_cookie_value()
     {
         if(!isset($_COOKIE['temp_user_id'])) {
 	        $cookie_name = "temp_user_id";
