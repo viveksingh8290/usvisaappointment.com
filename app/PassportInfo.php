@@ -13,14 +13,14 @@ class PassportInfo extends Model
 
     public $table = "passport_info";
     
-    // protected $fillable = [        
-    //     'passport_number',
-    //     'passport_expiry_date',
-    //     'passport_issue_date',
-    //     'place_of_birth',
-    //     'place_of_issue',
-    //     'issuing_authority'
-    // ];
+     protected $fillable = [        
+         'passport_number',
+         'passport_expiry_date',
+         'passport_issue_date',
+         'place_of_birth',
+         'place_of_issue',
+         'issuing_authority'
+     ];
 
     /**
      * The attributes that should be hidden for arrays.

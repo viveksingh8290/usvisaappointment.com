@@ -435,13 +435,13 @@
 							<label for="add_passport_number">Passport Number<span class="required">*</span></label>
 						</div>
 						<div class="form-group col-md-9">
-							<input type="text" class="form-control" id="add_passport_number" name="add_passport_number" placeholder="Passport Number" required="">
+							<input type="text" class="form-control" id="add_passport_number" name="add_passport_number" placeholder="Passport Number" required value="{{ $add_passport_number }}">
 						</div>
 						<div class="form-group col-md-2">
 							<label for="add_residence_country">Country of Residence<span class="required">*</span></label>
 						</div>
 						<div class="form-group col-md-9">
-							<input type="text" class="form-control" id="add_residence_country" name="add_residence_country" required="">
+							<input type="text" class="form-control" id="add_residence_country" name="add_residence_country" required value="{{ $add_residence_country }}">
 						</div>
 					</div>
 				</div>
@@ -677,9 +677,9 @@
 							<div class="form-group col-md-9">
 								<select name="upcoming_specify" id="upcoming_specify" style="width: 100%; height: 32px;">
 									<option class="none" value="">Please select a visa class</option>
-									<option class="B" value="B1-B2" style="display: block;">BUSINESS &amp; TOURISM (TEMPORARY VISITOR) (B1/B2)</option>
-									<option class="B" value="B1-CF" selected="" style="display: block;">BUSINESS&nbsp;/ CONFERENCE (B1)</option>
-									<option class="B" value="B2-TM" style="display: block;">TOURISM&nbsp;/ MEDICAL TREATMENT (B2)</option>
+									<option class="B" value="B1-B2" style="display: block;" <?php if($upcoming_specify == "B1-B2"){ echo 'selected'; }?>>BUSINESS &amp; TOURISM (TEMPORARY VISITOR) (B1/B2)</option>
+									<option class="B" value="B1-CF" style="display: block;" <?php if($upcoming_specify == "B1-CF"){ echo 'selected'; }?>>BUSINESS&nbsp;/ CONFERENCE (B1)</option>
+									<option class="B" value="B2-TM" style="display: block;" <?php if($upcoming_specify == "B2-TM"){ echo 'selected'; }?>>TOURISM&nbsp;/ MEDICAL TREATMENT (B2)</option>
 								</select>
 							</div>
 							<div class="form-group col-md-2">
@@ -711,14 +711,14 @@
 							</div>
 							<div class="form-group col-md-9">
 								<select name="upcoming_relation_specify" id="upcoming_relation_specify" style="width: 100%; height: 32px;">
-									<option value="">-Please Select-</option>
-									<option value="C">Friend</option>
-									<option value="P">Child</option>
-									<option value="S">Spouse</option>
-									<option value="R">No Relative</option>
-									<option value="B">Business Associate</option>
-									<option value="H">School Official</option>
-									<option value="O">No</option>
+									<option value="">>-Please Select-</option>
+									<option value="C" <?php if($upcoming_relation_specify == "C"){ echo 'selected'; }?>>Friend</option>
+									<option value="P" <?php if($upcoming_relation_specify == "P"){ echo 'selected'; }?>>Child</option>
+									<option value="S" <?php if($upcoming_relation_specify == "S"){ echo 'selected'; }?>>Spouse</option>
+									<option value="R" <?php if($upcoming_relation_specify == "R"){ echo 'selected'; }?>>No Relative</option>
+									<option value="B" <?php if($upcoming_relation_specify == "B"){ echo 'selected'; }?>>Business Associate</option>
+									<option value="H" <?php if($upcoming_relation_specify == "H"){ echo 'selected'; }?>>School Official</option>
+									<option value="O" <?php if($upcoming_relation_specify == "O"){ echo 'selected'; }?>>No</option>
 								</select>
 							</div>
 							<div class="form-group col-md-2">

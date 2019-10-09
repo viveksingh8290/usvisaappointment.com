@@ -539,39 +539,39 @@
                                 <label for="email">Passport Number: <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="passport_number" name="passport_number" placeholder="Job title" required>
+                                <input type="text" class="form-control" id="passport_number" name="passport_number" placeholder="Job title" required value="{{ $passport_number }}">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Passport Expiry Date: <span class="required">*</span>
                                 </label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="date" class="form-control" id="passport_expiry_date" name="passport_expiry_date" required>
+                                <input type="date" class="form-control" id="passport_expiry_date" name="passport_expiry_date" required value="{{ $passport_expiry_date }}">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="email">Passport Issue Date: <span class="required">*</span>
                                 </label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="date" class="form-control" id="passport_issue_date" name="passport_issue_date" required>
+                                <input type="date" class="form-control" id="passport_issue_date" name="passport_issue_date" required value="{{ $passport_issue_date }}">
                             </div>                        
                             <div class="form-group col-md-2">
                                 <label for="Address">Place of birth:  <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="place_of_birth" name="place_of_birth"  required>
+                                <input type="text" class="form-control" id="place_of_birth" name="place_of_birth"  required value="{{ $place_of_birth }}">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">Place of issue:  <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="place_of_issue" name="place_of_issue"  required >
+                                <input type="text" class="form-control" id="place_of_issue" name="place_of_issue"  required value="{{ $place_of_issue }}">
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="Address">Issuing Authority: <span class="required">*</span></label>
                             </div>
                             <div class="form-group col-md-9">
-                                <input type="text" class="form-control" id="issuing_authority" name="issuing_authority"  required >
+                                <input type="text" class="form-control" id="issuing_authority" name="issuing_authority"  required value="{{ $issuing_authority }}">
                             </div>                         
                         </div>
                     </div>

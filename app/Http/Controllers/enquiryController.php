@@ -425,17 +425,20 @@ class enquiryController extends Controller
             $userId = $_COOKIE['temp_user_id'];
             $PersonalInfo = PersonalInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
             $ParentsInfo = ParentsInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
-            $ContactInfo = ContactInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();           
+            $ContactInfo = ContactInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+            $PassportInfo = PassportInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
 
             return view('application-step-one')
                     ->with('PersonalInfo', $PersonalInfo)
                     ->with('ParentsInfo', $ParentsInfo)
-                    ->with('ContactInfo', $ContactInfo);
+                    ->with('ContactInfo', $ContactInfo)
+                    ->with('PassportInfo', $PassportInfo);
         }else{
             return view('application-step-one')
                     ->with('PersonalInfo', '')
                     ->with('ParentsInfo', '')
-                    ->with('ContactInfo', '');
+                    ->with('ContactInfo', '')
+                    ->with('PassportInfo', '');
         }       
     }
     public function applicationStepTwo()
