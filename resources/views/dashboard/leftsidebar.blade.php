@@ -9,9 +9,9 @@
                     <ul class="metismenu" id="menu1">
                         <li class="active">
                             <a class="has-arrow" href="index.html">
-								   <i class="fa big-icon fa-home icon-wrap"></i>
-								   <span class="mini-click-non">Admin Panel</span>
-								</a>
+                                   <i class="fa big-icon fa-home icon-wrap"></i>
+                                   <span class="mini-click-non">Admin Panel</span>
+                                </a>
                             <ul class="submenu-angle" aria-expanded="true">
                                 <li><a title="Dashboard" href="{{ url('dashboard') }}"><i class="fa fa-bullseye sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Dashboard</span></a></li>                    
                                                            
@@ -67,6 +67,23 @@
                             <ul class="submenu-angle" aria-expanded="false">
                                 <li><a title="Banner Section" href="{{ url('banner-section-embassy-info') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Banner Section</span></a></li>
                                 <li><a title="Section 2 Edit" href="{{ url('section2-embassy-info-edit') }}"><i class="fa fa-television sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Section 2</span></a></li>                     
+                                <li></li>
+                            </ul>
+                        </li> 
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-list-alt icon-wrap"></i> <span class="mini-click-non">Visa category</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="b1" href="{{ url('visa-category-text/b1') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">B1</span></a></li>
+                                <li><a title="b2" href="{{ url('visa-category-text/b2') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">B2</span></a></li>
+                                <li><a title="b1-b2" href="{{ url('visa-category-text/b1-b2') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">B1-B2</span></a></li>
+                                <li><a title="j1" href="{{ url('visa-category-text/j1') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">J1</span></a></li>
+                                <li><a title="f1" href="{{ url('visa-category-text/f1') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">F1</span></a></li>
+                                <li><a title="c1-d" href="{{ url('visa-category-text/c1-d') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">C1-D</span></a></li>
+                                <li><a title="visa-step1" href="{{ url('visa-category-text/application-step-one') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">apply for visa step 1</span></a></li>
+                                <li><a title="visa-step2" href="{{ url('visa-category-text/application-step-two') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">apply for visa step 2</span></a></li>
+                                <li><a title="visa-step3" href="{{ url('visa-category-text/application-step-three') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">apply for visa step 3</span></a></li>                
+                                <li></li>
+                                <li></li>
                                 <li></li>
                             </ul>
                         </li>                   

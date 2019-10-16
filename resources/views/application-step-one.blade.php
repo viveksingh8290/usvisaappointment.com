@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <h2 class="lead">{{ $arr['main_heading'] }}</h2>
-                        <p>{{ $arr['sub_heading'] }}</p>
+                        <p>{!! html_entity_decode($arr['sub_heading']) !!}</p>
                     </div>  
                 </div>
             </div>  

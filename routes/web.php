@@ -119,5 +119,8 @@ Route::group([
 	Route::get('application-step-one-view/{id}', 'adminEnquiryController@applicationStepOneDetail'); 
 	Route::get('application-step-two-view/{id}', 'adminEnquiryController@applicationStepTwoDetail');
 	Route::get('application-step-three-view/{id}', 'adminEnquiryController@applicationStepThreeDetail');
+
+	Route::get('visa-category-text/{name}', 'adminEnquiryController@getVisaCategoryText');  // visa category
+	Route::post('visa-text-update', ['as' => 'visaText.update', 'uses' => 'adminHomeController@visaTextUpdate']);
 });
 

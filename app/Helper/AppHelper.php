@@ -47,13 +47,19 @@ class AppHelper extends Model
         );
         return $url_value;
     }
-    public function validateDataString($str){
+    public static function validateDataString($str){
         $validArray = array('', ' ', null, 'null', 'undefined');
         if(in_array($str, $validArray) || ctype_space($str)){
             return false;
         }else{
             return true;
         }
+    }
+    public static function dataReady($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
      public static function instance()
      {

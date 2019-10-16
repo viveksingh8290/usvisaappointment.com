@@ -419,7 +419,7 @@ class enquiryController extends Controller
         
         return back()->with('success_msg', 'Enquiry inserted successfully!');
     }
-    public function applicationStepOne($type = 'application_step_one')
+    public function applicationStepOne($type = 'application-step-one')
     {
         $PersonalInfo = array();
         $ParentsInfo = array();

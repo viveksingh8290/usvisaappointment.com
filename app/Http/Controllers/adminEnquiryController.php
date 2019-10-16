@@ -14,6 +14,7 @@ use App\AddInfo;
 use App\PastVisa;
 use App\UpcomingTrip;
 use App\AddQues;
+use App\Uidesign;
 
 class adminEnquiryController extends Controller
 {
@@ -105,6 +106,10 @@ class adminEnquiryController extends Controller
             $user7 = AddQues::where('user_id', '=', $user_id)->delete();
             return back()->with('success_msg', 'Enquiry deleted successfully!');
         }      
-        
+        public function getVisaCategoryText($type){
+            $pageData     = Uidesign::where(['page' => $type, 'section' => 'section_1'])->get();
+            return view('dashboard/visa-cat-text')
+                    ->with('PageData', $pageData);
+        }
         
 }
