@@ -419,59 +419,63 @@ class enquiryController extends Controller
         
         return back()->with('success_msg', 'Enquiry inserted successfully!');
     }
-    public function applicationStepOne()
+    public function applicationStepOne($type = 'application_step_one')
     {
-        if(isset($_COOKIE['temp_user_id'])){
-            $userId = $_COOKIE['temp_user_id'];
-            $PersonalInfo = PersonalInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
-            $ParentsInfo = ParentsInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
-            $ContactInfo = ContactInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
-            $PassportInfo = PassportInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+        $PersonalInfo = array();
+        $ParentsInfo = array();
+        $ContactInfo = array();
+        $PassportInfo = array();
+        $pageData     = array();
 
+        if(isset($_COOKIE['temp_user_id'])){
+            $userId         = $_COOKIE['temp_user_id'];
+            $PersonalInfo   = PersonalInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+            $ParentsInfo    = ParentsInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+            $ContactInfo    = ContactInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+            $PassportInfo   = PassportInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();            
+        }
+        if($type != ''){
+            $pageData     = Uidesign::where(['page' => $type, 'section' => 'section_1'])->get();
+        }
             return view('application-step-one')
                     ->with('PersonalInfo', $PersonalInfo)
                     ->with('ParentsInfo', $ParentsInfo)
                     ->with('ContactInfo', $ContactInfo)
-                    ->with('PassportInfo', $PassportInfo);
-        }else{
-            return view('application-step-one')
-                    ->with('PersonalInfo', '')
-                    ->with('ParentsInfo', '')
-                    ->with('ContactInfo', '')
-                    ->with('PassportInfo', '');
-        }       
+                    ->with('PassportInfo', $PassportInfo)
+                    ->with('PageData', $pageData);             
     }
     public function applicationStepTwo()
     {
+        $UpcomingTrip = array();
+        $PastVisa = array();
+        $AddInfo = array();
+
         if(isset($_COOKIE['temp_user_id'])){
             $userId = $_COOKIE['temp_user_id'];
             $UpcomingTrip = UpcomingTrip::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
-            $PastVisa = PastVisa::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
-            $AddInfo = AddInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();          
-
-            return view('application-step-two')
+            $PastVisa     = PastVisa::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+            $AddInfo      = AddInfo::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();   
+        }
+        $pageData     = Uidesign::where(['page' => 'application_step_two', 'section' => 'section_1'])->get(); 
+        return view('application-step-two')
                     ->with('UpcomingTrip', $UpcomingTrip)
                     ->with('PastVisa', $PastVisa)
-                    ->with('AddInfo', $AddInfo);
-        }else{
-            return view('application-step-two')
-                    ->with('UpcomingTrip', '')
-                    ->with('PastVisa', '')
-                    ->with('AddInfo', '');
-        }       
+                    ->with('AddInfo', $AddInfo)
+                    ->with('PageData', $pageData);     
     }
 
-    public function applicationStepThree() {
+    public function applicationStepThree() 
+    {
+        $AddQues = array();
+
         if(isset($_COOKIE['temp_user_id'])){
             $userId = $_COOKIE['temp_user_id'];
-            $AddQues = AddQues::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();          
-
-            return view('application-step-three')
-                    ->with('AddQues', $AddQues);
-        }else{
-            return view('application-step-three')
-                    ->with('AddQues', '');
-        }       
+            $AddQues = AddQues::where(['user_id' => $userId])->orderBy('id', 'DESC')->take(1)->get();
+        }
+        $pageData     = Uidesign::where(['page' => 'application_step_three', 'section' => 'section_1'])->get();
+        return view('application-step-three')
+                    ->with('AddQues', $AddQues)
+                    ->with('PageData', $pageData);      
     } 
       
         
