@@ -22,4 +22,8 @@ class AppHelper
 	    }
 	    return $_COOKIE['temp_user_id'];
     }
+    public function get_url() {
+      $url_value=array("application-step-1"=>"apply-for-visa","application-step-2"=>"apply-for-visa-2","application-step-3"=>"apply-for-visa-3");
+      return $url_value;
+    }
 }

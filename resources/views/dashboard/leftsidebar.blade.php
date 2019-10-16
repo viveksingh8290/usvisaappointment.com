@@ -69,11 +69,14 @@
                                 <li><a title="Section 2 Edit" href="{{ url('section2-embassy-info-edit') }}"><i class="fa fa-television sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Section 2</span></a></li>                     
                                 <li></li>
                             </ul>
-                        </li>                   
-                        
-                        
-
-                        
+                        </li>
+                        <li>
+                            <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-list-alt icon-wrap"></i> <span class="mini-click-non">Visa Page</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="Visa Update" href="{{ url('visa-edit') }}"><i class="fa fa-television sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">Visa Edit</span></a></li>
+                                <li></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>

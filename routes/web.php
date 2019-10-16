@@ -91,6 +91,8 @@ Route::group([
 	Route::post('section3UpdateImage', ['as' => 'section3UpdateImage.insert', 'uses' => 'adminHomeController@section3UpdateImage']);
 	Route::get('section4-edit', 'adminHomeController@section4Update');
 	Route::post('section4Update', ['as' => 'section4Update.update', 'uses' => 'adminHomeController@section4UpdateData']);
+	Route::get('visa-edit', 'adminHomeController@visaUpdate');
+	Route::post('visa-updates', ['as' => 'visa.update', 'uses' => 'adminHomeController@VisaUpdateHome']);
 
 
 	Route::get('banner-section-about', 'adminHomeController@bannerSectionAbout'); 

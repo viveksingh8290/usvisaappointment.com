@@ -145,6 +145,38 @@ class adminHomeController extends Controller
                     return false;
                }
         }
+        public function visaUpdate()
+        {
+            $product = Uidesign::where(['section' => 'section_1'])->limit(1)->get();
+            if($product) {                    
+                return view('dashboard/visa-edit')
+                ->with('section_1', $product);
+            }else{   
+                return false;
+            }
+        }
+        public function visaUpdateHome(Request $request)
+        {           
+            $main_heading   =   Input::get('main_heading');
+            $sub_heading    =   Input::get('sub_heading');
+
+            $content = array('main_heading' => $main_heading, 'sub_heading' => $sub_heading);
+            $contentjson = json_encode($content);
+
+            $data = array(
+                'content' => $contentjson,
+                'active' => Input::get('active'),
+                'updated_at' => date('Y-m-d H:i:s')
+            );
+            $id = Input::get('id');
+            $page_id = Input::get('page_id');
+               $result =  Uidesign::where(['id'=>$id, 'page_id' => $page_id])->update($data);
+               if($result){
+                    return back()->with('success_msg', 'Visa updated successfully!');
+               }else{
+                    return false;
+               }
+        }
         public function section3TextUpdate()
         {
             $product = Uidesign::where(['section' => 'section_3_text'])->get();

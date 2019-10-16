@@ -1,7 +1,11 @@
 @extends('_layouts.layout')
 @section('meta_description')
 @stop
-@section('content')     
+@section('content')
+<?php
+    $url_value = \App\Helper\AppHelper::instance()->get_url();
+    echo $url_value['application-step-1'];
+?>
 <section class="stepwiz">
     <div class="stepwizard">
         <div class="stepwizard-row setup-panel">
