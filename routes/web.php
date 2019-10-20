@@ -12,52 +12,46 @@
 */
 
 Route::get('/', 'enquiryController@homePage'); 
-Route::get('home', 'enquiryController@homePage'); 
-Route::get('about', 'enquiryController@aboutUsPage'); 
-Route::get('contact-us', 'enquiryController@contactUsPage');
-Route::get('esta', 'enquiryController@estaPage');
-Route::get('embassy-info', 'enquiryController@embassyInfoPage'); 
-Route::get('application-step-one', 'enquiryController@applicationStepOne'); 
-Route::get('application-step-two', 'enquiryController@applicationStepTwo'); 
-Route::get('application-step-three', 'enquiryController@applicationStepThree');
+Route::get('home', 'enquiryController@homePage');                      // home
+Route::get('about', 'enquiryController@aboutUsPage');                  //  about
+Route::get('contact-us', 'enquiryController@contactUsPage');           // contact-us
 
-Route::get('/talk-to-our-expert', function () {
+Route::get('esta', 'enquiryController@estaPage');                      // esta
+Route::get('embassy-info', 'enquiryController@embassyInfoPage');       // embassy-info 
+
+Route::get('apply-for-visa', 'enquiryController@applicationStepOne');  // application-step-one
+Route::get('apply-for-visa-step2', 'enquiryController@applicationStepTwo');   // application-step-two
+Route::get('apply-for-visa-step3', 'enquiryController@applicationStepThree'); // application-step-three
+
+Route::get('visa-category/{name}/apply-for-visa', 'enquiryController@applicationStepOne');  // visa category
+
+Route::get('talk-to-our-expert', function () {                   // talk-to-our-expert
     return view('404');
 });
-Route::get('/B1', function () {
-    return view('application-step-one');
-});
-Route::get('/B2', function () {
-    return view('application-step-one');
-});
-Route::get('/B1-B2', function () {
-    return view('application-step-one');
-});
-Route::get('/J1', function () {
-    return view('application-step-one');
-});
-Route::get('/F1', function () {
-    return view('application-step-one');
-});
-Route::get('/C1-D', function () {
-    return view('application-step-one');
-});
-Route::get('/terms-and-condition', function () {
+Route::get('terms-and-condition', function () {                   // terms-and-condition
     return view('404');
 });
-Route::get('/privacy-policy', function () {
+Route::get('privacy-policy', function () {                        // privacy-policy
     return view('404');
 });
-Route::get('/faq', function () {
+Route::get('faq', function () {                                   // faq
     return view('404');
 });
+
+
+
+// Route::get('visa-category/B1/apply-for-visa', 'enquiryController@applicationStepOne');  // B1
+// Route::get('visa-category/B2/apply-for-visa', 'enquiryController@applicationStepOne');  // B2
+// Route::get('visa-category/B1-B2/apply-for-visa', 'enquiryController@applicationStepOne');  // B1-B2
+// Route::get('visa-category/J1/apply-for-visa', 'enquiryController@applicationStepOne');  // J1
+// Route::get('visa-category/F1/apply-for-visa', 'enquiryController@applicationStepOne');  // F1
+// Route::get('visa-category/C1-D/apply-for-visa', 'enquiryController@applicationStepOne');  // C1-D
+
 
 Route::post('contact', ['as' => 'contact.insert', 'uses' => 'enquiryController@contactEnquiry']);
 Route::post('personal-information', ['as' => 'personalInformation.update', 'uses' => 'enquiryController@personalInformationUpdate']);
 Route::post('additional-information', ['as' => 'additionalInformation.update', 'uses' => 'enquiryController@additionalInformationUpdate']); 
 Route::post('additional-question', ['as' => 'additionalQuestion.update', 'uses' => 'enquiryController@additionalQuestionUpdate']); 
-
-
 
 
 Auth::routes();
@@ -127,5 +121,8 @@ Route::group([
 	Route::get('application-step-one-view/{id}', 'adminEnquiryController@applicationStepOneDetail'); 
 	Route::get('application-step-two-view/{id}', 'adminEnquiryController@applicationStepTwoDetail');
 	Route::get('application-step-three-view/{id}', 'adminEnquiryController@applicationStepThreeDetail');
+
+	Route::get('visa-category-text/{name}', 'adminEnquiryController@getVisaCategoryText');  // visa category
+	Route::post('visa-text-update', ['as' => 'visaText.update', 'uses' => 'adminHomeController@visaTextUpdate']);
 });
 

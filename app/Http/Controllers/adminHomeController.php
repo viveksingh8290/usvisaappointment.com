@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use Response;
 use App\Uidesign;
+use App\Helper\AppHelper;
 
 class adminHomeController extends Controller
 {
@@ -612,6 +613,24 @@ class adminHomeController extends Controller
             return back()->with('success_msg', 'Embassy page data updated successfully!');
         }
         
-        
+       public function visaTextUpdate(Request $request){
+            $main_heading      =   Input::get('main_heading');
+            $sub_heading   =   Input::get('sub_heading');
+            $active   =   Input::get('active');
+            $page      =   Input::get('page');
+
+            $final_data = AppHelper::dataReady($sub_heading);
+            $content = array('main_heading' => $main_heading, 'sub_heading' => $final_data);
+            $contentjson = json_encode($content);
+         
+            $data = array(
+                'content'   => $contentjson,
+                'page'      => $page,
+                'active'   => $active 
+            );
+            $id   =   Input::get('id'); 
+            $result =  Uidesign::where(['id'=> $id])->update($data);
+            return back()->with('success_msg', 'Visa text updated successfully!');
+        }
         
 }

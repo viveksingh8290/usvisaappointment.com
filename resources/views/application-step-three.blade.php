@@ -1,32 +1,50 @@
 @extends('_layouts.layout')
 @section('meta_description')
 @stop
-@section('content')	 
+@section('content')	
+<?php
+	$url_value = \App\Helper\AppHelper::instance()->get_url();
+?>  
 <section class="stepwiz">
 	<div class="stepwizard">
 		<div class="stepwizard-row setup-panel">
 			<div class="stepwizard-step">
-				<a href="{{url('application-step-one')}}" type="button" class="btn btn-primary btn-circle">1</a>
+				<a href="{{url($url_value['application-step-one'])}}" type="button" class="btn btn-primary btn-circle">1</a>
 				<p>Step 1</p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="{{url('application-step-two')}}" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
+				<a href="{{url($url_value['application-step-two'])}}" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
 				<p>Step 2</p>
 			</div>
 			<div class="stepwizard-step">
-				<a href="{{url('application-step-three')}}" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+				<a href="{{url($url_value['application-step-three'])}}" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
 				<p>Step 3</p>
 			</div>
 		</div>
 	</div>
 </section>
+@if(!empty($PageData))
+@foreach($PageData as $pagedata)
+<?php                                                   
+    $arr = json_decode($pagedata->content, true);
+?>
+    <div>
+        <div class="content pdb0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h2 class="lead">{{ $arr['main_heading'] }}</h2>
+                        <p>{!! html_entity_decode($arr['sub_heading']) !!}</p>
+                    </div>  
+                </div>
+            </div>  
+        </div>
+    </div>
+@endforeach
+@endif 
 <?php
-	if(!isset($_COOKIE['temp_user_id'])) {
-			$cookie_name = "temp_user_id";
-			$cookie_value = rand();
-			setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-	} 
-	?>
+    $user_id = \App\Helper\AppHelper::instance()->get_cookie_value();
+?>
 {!! Form::open(['route' => ['additionalQuestion.update'], 'id' => 'additionalQuestion', 'method' => 'post', 'files' => true]) !!}
 <?php
     $addn_embassy = '';
@@ -69,7 +87,6 @@
     $addn_academic_country = '';
     $addn_academic_major = '';
     $addn_academic_duties = '';
-	$user_id = rand();
 ?>
 @if(!empty($AddQues))
 	@foreach($AddQues as $add_ques)
