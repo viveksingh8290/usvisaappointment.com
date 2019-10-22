@@ -87,6 +87,14 @@ Route::group([
 	Route::post('section4Update', ['as' => 'section4Update.update', 'uses' => 'adminHomeController@section4UpdateData']);
 	Route::get('visa-edit', 'adminHomeController@visaUpdate');
 	Route::post('visa-updates', ['as' => 'visa.update', 'uses' => 'adminHomeController@VisaUpdateHome']);
+	Route::get('faq-add', function () {                                   // faq
+	    return view('dashboard/faq-add');
+	});
+	Route::get('faq-list', 'adminHomeController@faqList');
+	Route::get('faq-list/{id}', 'adminHomeController@faqListById');
+	Route::get('faq-trash/{id}', 'adminHomeController@faqTrash');
+	Route::post('faq-list', ['as' => 'faq.update', 'uses' => 'adminHomeController@faqUpdate']); 
+	Route::post('faq-add', ['as' => 'faq.add', 'uses' => 'adminHomeController@faqAdd']);
 
 
 	Route::get('banner-section-about', 'adminHomeController@bannerSectionAbout'); 

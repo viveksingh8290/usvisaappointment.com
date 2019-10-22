@@ -87,7 +87,13 @@
                                 <li></li>
                             </ul>
                         </li>                   
-                        
+                        <li>
+                            <a class="has-arrow" href="faq-add" aria-expanded="false"><i class="fa fa-list-alt icon-wrap"></i> <span class="mini-click-non">FAQ</span></a>
+                            <ul class="submenu-angle" aria-expanded="false">
+                                <li><a title="FAQ Add" href="{{ url('faq-add') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">FAQ Add</span></a></li>
+                                <li><a title="FAQ List" href="{{ url('faq-list') }}"><i class="fa fa-inbox sub-icon-mg" aria-hidden="true"></i> <span class="mini-sub-pro">FAQ List</span></a></li>
+                            </ul>
+                        </li>  
                         
 
                         

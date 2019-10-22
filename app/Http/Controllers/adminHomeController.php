@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use Response;
 use App\Uidesign;
+use App\Faq;
 use App\Helper\AppHelper;
 
 class adminHomeController extends Controller
@@ -632,5 +633,59 @@ class adminHomeController extends Controller
             $result =  Uidesign::where(['id'=> $id])->update($data);
             return back()->with('success_msg', 'Visa text updated successfully!');
         }
-        
+        public function faqAdd(Request $request)
+        {           
+            $ques   =   Input::get('ques');
+            $ans    =   Input::get('ans');
+
+            $data = array(
+                'ques' => $ques,
+                'ans' => $ans
+            );
+            Faq::insert($data);
+            return back()->with('success_msg', 'FAQ inserted successfully!');
+        }
+        public function faqList()
+        {           
+            $faqs = Faq::get();
+            if($faqs) {                    
+                return view('dashboard/faq-list')
+                ->with('faq_list', $faqs);
+            }else{   
+                return false;
+            }
+        }
+        public function faqListById()
+        {           
+            $faqs = Faq::where(['id' => 'id'])->get();
+            if($faqs) {                    
+                return view('dashboard/faq-list{id}')
+                ->with('faq_list', $faqs);
+            }else{   
+                return false;
+            }
+        }
+        public function faqUpdate(Request $request)
+        {           
+            $ques   =   Input::get('ques');
+            $ans    =   Input::get('ans');
+            $id    =   Input::get('id');
+
+            $data = array(
+                'ques' => $ques,
+                'ans' => $ans
+            );
+           $result =  Faq::where(['id'=>$id])->update($data);
+           if($result){
+                return back()->with('success_msg', 'FAQ updated successfully!');
+           }else{
+                return false;
+           }
+        }
+        public function faqTrash($id)
+        {
+            $user = Faq::find($id);
+            $user->delete();
+            return back()->with('success_msg', 'FAQ deleted successfully!');
+        }
 }
